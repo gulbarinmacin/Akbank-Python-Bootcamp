@@ -1,6 +1,10 @@
 import csv
 from datetime import datetime
 
+
+#Pizza super class ve subclassların başlangıcı
+#Burada pizza açıklaması ve fiyatı pizza türüne göre değişmektedir.
+#get_description ve get_cost ile açıkalma ve cost bilgileri alınmaktadır
 class Pizza:
     def __init__(self):
         self.description = "Pizza"
@@ -48,7 +52,10 @@ class SadePizza(Pizza):
     def get_cost(self):
         return self.cost
     
-
+#Pizza super class ve subclassların bitişi
+    
+#Decorator super class ve sosların classlarının başlangıcı
+#Componentelre göre description ve ve fiyatlar güncellenir
 class Decorator(Pizza):
     def __init__(self, component):
         super().__init__()
@@ -114,7 +121,11 @@ class Mısır(Decorator):
         
     def get_cost(self):
         return self.component.get_cost() + self.cost
+#Decorator superclası ve sosların clasının bitişi
 
+# main fonksiyonunda menu dosyası ekrana yazdırılır ardından pizza ve sos seçimi yaptırılır
+#bu seçimlerden yola çıkarak tutar hesaplanır
+#Kullanıcı bilgileri alınır ve hepsi csv dosyasına yazdırılır
 def main():
     # Menüyü dosyadan oku ve ekrana yazdır
     with open("Menu.txt", "r") as f:
@@ -173,5 +184,6 @@ def main():
 
     # Sipariş onayı
     print(f"\nSiparişiniz alınmıştır.\n\n{total_cost} TL ödeme yapılacaktır.\n\nTeşekkürler!")
-
+    
+#main fonksiyonu ile tüm kod çalıştırılır    
 main()
